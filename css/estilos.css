@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background: url('../img/fondo.png');
+	background-size: cover;/*para que ocupe el 100% del ancho*/
+	background-attachment: fixed;/*para que el fondo se pegue y no se mueva*/
+	font-family: 'Ubuntu', sans-serif;
+}
+a{
+	text-decoration: none;
+
+}
+.contenedor{
+	width: 90%;
+	max-width: 700px;
+	margin: auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.tarjeta{
+	background-color: #fff;
+	margin: 40px 0;
+	border-radius: 5px;
+	overflow: hidden;
+	z-index: 1000;
+}
+
+
+/* ------------------------------------- */
+/* ----------Slider banner*/
+/* ------------------------------------- */
+
+.slide-banner{
+	overflow: hidden;
+	z-index: 1000;
+	position: relative;
+}
+.slide-banner .banner{
+	position: relative;
+	width: 100%;
+}
+.slide-banner .banner img{
+	vertical-align: top;/*Quita el espacio entre imágenes*/
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 100%;/*para que empuje de izquierda a derecha*/
+}
