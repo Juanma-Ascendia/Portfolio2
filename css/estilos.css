@@ -50,3 +50,21 @@ a{
 	top: 0;
 	left: 100%;/*para que empuje de izquierda a derecha*/
 }
+.slide-banner .flecha-banner{
+	font-size: 35px;
+	line-height: 35px;
+	/*color: rgba(0,0,0,.2);/*Transparencia de 0.2*/
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	z-index: 1100;/*Para que las flechas aparezcan por delante del banner.*/
+}
+.slide-banner .flecha-banner:hover{
+	color: rgba(0,0,0,.6);
+}
+.slide-banner .anterior{
+	left: 20px;
+}
+.slide-banner .siguiente{
+	right: 20px;
+}

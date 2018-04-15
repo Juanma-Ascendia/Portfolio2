@@ -24,9 +24,69 @@ $(document).ready(function () {
 	altoBanner();//Con esto ejecutamos la función.
 
 	$ (window).resize(function(){//Cuando la ventana (window) cambie de tamaño (.resize) queremos ejecutar una función.
-
 		altoBanner(); //Esta es la variable que cacula el alto de las imágenes.
 
 	});
+
+
+//------------------------------
+//-------banner
+//------------------------------
+
+
+      //Boton siguiente
+    $('#banner-siguiente').on('click', function(e){//Queremos acceder al Id banner-siguiente y cuando alguien te de un click ejecutamos una función.
+    	e.preventDefault();//Con esto evitamos que al pulsar en la flecha salga el simbolo # en la barra de navegación.
+
+    	if(banner.posicion < banner.numeroSlides) {//Si la posición del banner es menor que el numero de slides ejecuta el codigo.
+
+    		banner.padre.children().not('.activo').css({//todos los que no tengan la clase activo quiero que modifiques su codigo css.
+    			'left':'100%'
+    		});
+
+    		$('#banner .activo').removeClass('activo').next().addClass('activo').animate({//Queremos acceder a banner con la clase .activo después quitamos
+    	     //la clase ('activo') sin punto y movernos al siguiente elemento .next() al que le agregamos la clase ('activo')
+    			'left':'0' //Y le decimos con .animate que la desplace a la izquierda 0.
+
+    	    });
+
+    	    $('#banner.activo').next().animate({
+    	    	'left':'-100%'
+    	    });
+
+    	    banner.posicion = banner.posicion + 1;
+
+    	} 
+
+    	else {
+
+    		$('#banner .activo').animate({
+    			'left': '-100%'
+    		});
+
+    		banner.padre.children().not('.activo').css({//todos los que no tengan la clase activo quiero que modifiques su codigo css para que se desplacen a la izquierda.
+    			'left':'100%'
+    		});
+
+
+    		$('#banner .activo').removeClass('activo');//Si la posición no es menor que el numero de slides entonces
+    		                                           //accede a la clase activo y quita la clase activo.
+    		banner.padre.children('.slide').first().addClass('activo').animate({//Accede a banner.padre y a los hijos que tengan la clase .slide y acceder al primero
+    																			//y añade la clase activo.
+    			'left':0																	
+    		});
+    																   
+    		banner.posicion=1;
+    	}
+
+    	 
+                    
+                                    
+
+    }); 
+
 		
 });
+
+
+
