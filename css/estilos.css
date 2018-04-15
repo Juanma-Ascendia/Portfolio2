@@ -131,9 +131,67 @@ a{
 	color: #55acee;
 	font-size: 18px;
 	line-height: 18px;
+	margin-bottom: 16px;
 }
 .slider-info .informacion .pais{
 	color: #8d8d8d;
 	font-size: 14px;
 	line-height: 14px;
 }
+.slider-info .informacion .pais img{
+	position: relative;
+	margin-right: 10px;
+}
+.slider-info .informacion .subtitulo{
+	color: #444;
+	font-size: 18px;
+	line-height: 24px;
+	margin-bottom: 16px;
+}
+.slider-info .informacion .texto{
+	color: #55acee;
+	font-size: 18px;
+	line-height: 24px;
+}
+
+/*---Botones Slider Info----*/
+
+.slider-info .botones{
+	width: 100%;
+}
+.slider-info .botones span{
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	margin: 0 10px;
+	border-radius: 50%;
+	background: #e6e6e6;
+}
+.slider-info .botones .active{
+	background: #6ed279;
+}
+
+
+/*----Redes Sociales----*/
+
+
+.redes-sociales{
+	width: 100%;
+	text-align: center;
+	padding: 20px 0;
+}
+.redes-sociales a{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	line-height: 20px;
+	padding: 14px 0;
+	color: #fff;
+	background: #000;
+	border-radius: 50%;
+	margin: 0 10px; 
+}
+.redes-sociales .facebook{background:#3b5998;}
+.redes-sociales .linkedin{background:#0e76a8;}
+.redes-sociales .twiter{background:#55acee;}
+.redes-sociales .github{background:#767676;}

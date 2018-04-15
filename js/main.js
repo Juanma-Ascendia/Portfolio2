@@ -31,20 +31,43 @@ $(document).ready(function () {
 		});
 	}
 	var altoInfo = function(){ //Esta funcion se va a encargar de medir cuanto mide el banner para después darle una altura.
-		var alto=info.padre.children('.slide').outerHeight();//Con esto calculamos el alto de la clase slide.
+		var alto=info.padre.children('.activo').outerHeight();//Con esto calculamos el alto de la clase slide.
 
-		info.padre.css({//Accedemos al elemento padre y le modificamos el css.
+		info.padre.animate({//Accedemos al elemento padre y le modificamos el css.
 			'height':alto + 'px' //queremos que el alto sea igual al alto mas pixeles.
 		});
 	}
 
+	var altoContenedor = function(){
+		var altoVentana = $(window).height();
+
+		if (altoVentana <= $('#contenedor').outerHeight() + 200){
+			$('#contenedor').css({
+				'height': ''
+			});
+
+		} else{
+			$('#contenedor').css({
+				'height': altoVentana + 'px'
+			});
+		} 
+	};
+
 	altoBanner();//Con esto ejecutamos la función.
 	altoInfo();
+	altoContenedor();
 
 	$ (window).resize(function(){//Cuando la ventana (window) cambie de tamaño (.resize) queremos ejecutar una función.
 		altoBanner(); //Esta es la variable que cacula el alto de las imágenes.
+		altoInfo();
+		altoContenedor();
+	});
+	$('#info').children('.slide').each(function(){//Por cada uno queremos ejecutar una función.
+		$('#botones').append('<span>');
 
 	});
+	$('#botones').children('span').first().addClass('active');//Accedo al Id botones y a todos los hijos
+	//span y al primero le añadimos la clase active.
 
 
 //------------------------------
@@ -135,6 +158,107 @@ $(document).ready(function () {
  
     });
 
+//------------------------------
+//-------info
+//------------------------------
+
+
+//Botón siguiente
+$('#info-siguiente').on('click', function(e){//Queremos acceder al Id info-siguiente y cuando alguien te de un click ejecutamos una función.
+    	e.preventDefault();//Con esto evitamos que al pulsar en la flecha salga el simbolo # en la barra de navegación.
+
+    	if(info.posicion < info.numeroSlides) {//Si la posición del info es menor que el numero de slides ejecuta el codigo.
+
+    		info.padre.children().not('.activo').css({//todos los que no tengan la clase activo quiero que modifiques su codigo css.
+    			'left':'100%'
+    		});
+
+    		$('#info .activo').removeClass('activo').next().addClass('activo').animate({//Queremos acceder a info con la clase .activo después quitamos
+    	     //la clase ('activo') sin punto y movernos al siguiente elemento .next() al que le agregamos la clase ('activo')
+    			'left':'0' //Y le decimos con .animate que la desplace a la izquierda 0.
+
+    	    });
+
+    	    $('#info.activo').next().animate({
+    	    	'left':'-100%'
+    	    });
+
+    	    $('#botones').children('.active').removeClass('active').next().addClass('active');
+
+    	    info.posicion = info.posicion + 1;
+
+    	} 
+
+    	else {
+
+    		$('#info .activo').animate({
+    			'left': '-100%'
+    		});
+
+    		info.padre.children().not('.activo').css({//todos los que no tengan la clase activo quiero que modifiques su codigo css para que se desplacen a la izquierda.
+    			'left':'100%'
+    		});
+
+
+    		$('#info .activo').removeClass('activo');//Si la posición no es menor que el numero de slides entonces
+    		                                           //accede a la clase activo y quita la clase activo.
+    		info.padre.children('.slide').first().addClass('activo').animate({//Accede a info.padre y a los hijos que tengan la clase .slide y acceder al primero
+    																			//y añade la clase activo.
+    			'left':0																	
+    		});
+
+    		$('#botones').children('.active').removeClass('active');
+    		$('#botones').children('span').first().addClass('active');
+
+    		//Reseteamos la posición 1.														   
+    		info.posicion=1;
+    	}
+    	altoInfo();
+
+    }); 
+
+      //Botón anterior
+    $('#info-anterior').on('click', function(e){
+    	e.preventDefault();//Esto es para evitar que salga el caracter #.
+
+    	if(info.posicion > 1){
+
+    		info.padre.children().not('.activo').css({
+    		   'left':'-100%'
+    	    });
+    	    $('#info .activo').animate({
+    		   'left':'100%'
+    	    });
+    	    $('#info .activo').removeClass('activo').prev().addClass('activo').animate({
+    	    	'left':0
+    	    });
+
+    	    $('#botones').children('.active').removeClass('active').prev().addClass('active');
+
+    	    info.posicion=info.posicion -1;
+
+    	} else {
+    		info.padre.children().not('.activo').css({
+    			'left':'-100%'
+    		});
+    		$('#info .activo').animate({
+    			'left':'100%'
+    		});
+    		$('#info .activo').removeClass('activo');
+    		info.padre.children().last().addClass('activo').animate({
+    			'left':0
+    		});
+
+    		$('#botones').children('.active').removeClass('active');
+    		$('#botones').children('span').last().addClass('active');
+
+    		info.posicion=info.numeroSlides;
+    	}
+    	altoInfo();
+
+    	
+ 
+    });
 
 		
 });
