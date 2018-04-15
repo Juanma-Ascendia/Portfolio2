@@ -7,7 +7,7 @@ body{
 	background: url('../img/fondo.png');
 	background-size: cover;/*para que ocupe el 100% del ancho*/
 	background-attachment: fixed;/*para que el fondo se pegue y no se mueva*/
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 a{
 	text-decoration: none;
@@ -27,6 +27,7 @@ a{
 	border-radius: 5px;
 	overflow: hidden;
 	z-index: 1000;
+	width: 100%;
 }
 
 
@@ -67,4 +68,72 @@ a{
 }
 .slide-banner .siguiente{
 	right: 20px;
+}
+
+/* ------------------------------------- */
+/* ----------Slider Info*/
+/* ------------------------------------- */
+
+.slider-info{
+	text-align: center;
+	overflow: hidden;
+	padding: 20px 0;
+	z-index: 1000;
+	position: relative;
+}
+
+/*Sección información*/
+
+.slider-info .informacion{
+	width: 100%;
+}
+.slider-info .informacion article{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.slider-info .informacion article .slide{
+	background: #fff;
+	width: 100%;
+	left: 100%;
+	position: absolute;
+	padding: 20px 80px;
+}
+
+.slider-info .flecha-info{
+	font-size: 35px;
+	line-height: 35px;
+	color: #e6e6e6;
+	position: absolute;
+	top: 50%;
+	z-index: 1000;
+}
+.slider-info .flecha-info:hover{
+	color: #6ed279;
+}
+.slider-info .anterior{
+	left: 20px;
+}
+.slider-info .siguiente{
+	right: 20px;
+}
+
+/*Estilos para los Slide de Info*/
+
+.slider-info .informacion .nombre{
+	color: #444;
+	font-size: 38px;
+	line-height: 38px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+.slider-info .informacion .trabajo{
+	color: #55acee;
+	font-size: 18px;
+	line-height: 18px;
+}
+.slider-info .informacion .pais{
+	color: #8d8d8d;
+	font-size: 14px;
+	line-height: 14px;
 }
